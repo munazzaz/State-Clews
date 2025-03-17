@@ -1,42 +1,3 @@
-// import Image from "next/image";
-// import InYourTownText from "@/../public/InYourTownText.gif";
-// import CrowdBottom from "@/../public/CrowdBottom.gif";
-// import ManHangingLine from "@/../public/ManHangingLine.png";
-
-// const InYourTown = () => {
-//   return (
-//     // Negative top margin lifts this section over the previous one
-//     <div className="relative -mt-[40vh]">
-//       {/* Outer container provides extra scroll space */}
-//       <div className="relative h-[300vh]">
-//         {/* Sticky container remains pinned at top with InYourTownBg as its background */}
-//         <div
-//           className="sticky top-0 h-screen z-[1000] flex items-center justify-center"
-//           style={{
-//             backgroundImage: `url(/InYourTownBg.gif)`,
-//             backgroundSize: "cover",
-//             backgroundPosition: "center",
-//           }}
-//         >
-//           <div className="absolute flex justify-center top-[16.6rem] w-full"> 
-//           <Image src={ManHangingLine} alt="Man Hanging Line" className="  "/></div>
-//           <div><Image src={InYourTownText} alt="In Your Town Text" className="-mb-16"/></div>
-//           <div className="absolute -bottom-56  left-0 w-full">
-//           <Image
-//             src={CrowdBottom}
-//             alt="Crowd Bottom"
-//             className="w-full "
-//           />
-//         </div>
-//         </div>
-        
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default InYourTown;
-
 
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -67,7 +28,7 @@ const InYourTown = () => {
   const manGifTranslateX = useTransform(scrollYProgress, [0, 0.4, 0.9], [800, 0, -3200]);
 
   return (
-    <div ref={ref} className="relative -mt-[40vh] overflow-clip"
+    <div ref={ref} className="relative -mt-[100vh] overflow-clip"
     
     >
       {/* Outer container provides extra scroll space */}

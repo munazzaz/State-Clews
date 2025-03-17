@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 export default function WhatWillYouState() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,11 +12,39 @@ export default function WhatWillYouState() {
     offset: ["start 100%", "end 0%"],
   });
 
+  const videoRef = useRef<HTMLVideoElement | null>(null); // ✅ Typed ref
+
+  useEffect(() => {
+    const videoElement = videoRef.current;
+
+    if (!videoElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoElement.play(); // Start playing when in view
+          } else {
+            videoElement.pause(); // Pause when out of view
+          }
+        });
+      },
+      { threshold: 0.5 } // Start when 50% of video is visible
+    );
+
+    observer.observe(videoElement);
+
+    return () => {
+      observer.unobserve(videoElement);
+    };
+  }, []);
+
   // Fade in effect
   const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
 
   return (
-    <div ref={containerRef} className="relative  bg-cover bg-center  h-[650vh] z-[3500] bg-white"
+
+    <div ref={containerRef} className="relative  bg-cover bg-center  h-[750vh] z-[3500] bg-white"
    
     >
 
@@ -25,19 +53,19 @@ export default function WhatWillYouState() {
         className="sticky top-0 left-0 w-full h-screen hidden sm:flex items-center justify-center "   
         style={{ opacity}}
       >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source
-            src="https://framerusercontent.com/assets/cHLkL9lcFiPp1VpTt0oVvCdGnc.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
+         <video
+        ref={videoRef}
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+      >
+        <source
+          src="https://framerusercontent.com/assets/cHLkL9lcFiPp1VpTt0oVvCdGnc.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
       </motion.div>
       <motion.div
         className="sticky top-0 left-0 w-full h-screen flex sm:hidden items-center justify-center bg-white"

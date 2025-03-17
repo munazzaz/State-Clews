@@ -167,7 +167,7 @@ export default function IsNotJustApp() {
   // - The first (N-1) images cycle quickly between scroll progress 0.4 and 0.8.
   // - The last image is held from 0.8 to 0.9.
   const imagesStart = 0.4;
-  const imagesHold = 0.8;
+  const imagesHold = 0.9;
   const lastImageEnd = 1.1;
   const totalImages = SCROLL_IMAGES.length;
 

@@ -74,6 +74,7 @@ const HaveNoPower = () => {
 
   // Opacity (Image fades in)
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 1, 0], );
+  
 
   // Moves from Right to Center and exits fully left
   const translateX = useTransform(scrollYProgress, [0, 0.5, 1], [1250, 0, -3200] );
@@ -88,19 +89,21 @@ const HaveNoPower = () => {
   const bgOpacity = useTransform(scrollYProgress, [0.4, 0.6], [0, 2]);
 
   return (
-    <div ref={ref} className="relative  h-[380vh] flex flex-col items-center justify-center overflow-clip">
+    <div ref={ref} className="relative -mt-[80px] h-[590vh] flex flex-col items-center justify-center overflow-clip">
       {/* Background stays fixed */}
       <motion.div
         className="fixed top-0 left-0 w-full h-[100vh] bg-cover bg-center"
         style={{
           backgroundImage: "url('/no-power-bg.gif')",
           opacity: bgOpacity,
+          
         }}
       />
 
       {/* Sticky Wrapper (Keeps content in view during scroll) */}
       <div className="sticky top-0 h-[100vh] flex items-center sm:-mr-44 justify-center">
-      <div className="absolute sm:-ml-44 top-[29.1rem] sm:top-[13.1rem] w-[45rem] sm:w-[90rem] z-20">
+      <div className="absolute sm:-ml-44 top-[29.1rem] sm:top-[13.1rem] w-[45rem] sm:w-[90rem] z-20"
+      >
           <Image src={GifText} alt="Overlay Text" className="w-[1000px] sm:w-[3000rem] h-auto" />
         </div>
 
