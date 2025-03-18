@@ -166,8 +166,8 @@ export default function IsNotJustApp() {
   // Map scrolling images:
   // - The first (N-1) images cycle quickly between scroll progress 0.4 and 0.8.
   // - The last image is held from 0.8 to 0.9.
-  const imagesStart = 0.4;
-  const imagesHold = 0.9;
+  const imagesStart = 0.3;
+  const imagesHold = 0.8;
   const lastImageEnd = 1.1;
   const totalImages = SCROLL_IMAGES.length;
 
@@ -178,7 +178,7 @@ export default function IsNotJustApp() {
 
   return (
     // Container height increased to 800vh for extra scrolling after the images.
-    <div ref={containerRef} className="relative h-[300vh] bg-white">
+    <div ref={containerRef} className="relative h-[750vh] bg-white">
       {/* Background */}
       <div className="fixed  left-0 w-full h-screen bg-white z-0" />
 
